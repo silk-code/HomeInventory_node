@@ -1,0 +1,19 @@
+extends default
+block content
+	form(method="POST" action="/sign_up").addUser
+		div.form-group
+			p Name
+			input(type="text" name="name")
+		div.form-group
+			p Username
+			input(type="text" name="username")
+		div.form-group
+			p Email
+			input(type="email" name="email")
+		div.form-group
+			p Password
+			input(type="password" name="password")
+		div.form-group
+			p Repeat password
+			input(type="password" name="repPassword")
+		input(type='submit', value='Submit')

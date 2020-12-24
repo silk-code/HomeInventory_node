@@ -1,0 +1,11 @@
+extends default
+
+block content
+	form(method="POST" action="/sign_in").addUser
+		div.form-group
+			p Username
+			input(type="text" name="username")
+		div.form-group
+			p Password
+			input(type="password" name="password")
+		input(type='submit', value='Submit')

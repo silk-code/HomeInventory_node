@@ -1,0 +1,76 @@
+extends default
+
+block content
+	h3 Current item information:
+	table.table.table-striped
+		tr
+			th Name
+			th Category
+			th Location
+			th Amount
+			th Perishable
+			th Note
+		-var item=list[0]
+		if(item.isPerishable===1) 
+			-var isPerishable='Yes'
+		else
+			-var isPerishable='No'
+		tr
+			td= item.name
+			td= item.category
+			td= item.location
+			td= item.qty+" "+item.unit
+			td= isPerishable
+			td= item.note	
+	br
+	h3 New information:
+	form(method="POST" action="/update_inventory")
+		div.form-group
+			input(type="hidden" name="itemID" value=item.itemID)
+		div.form-group
+			p Name
+			input(type="text" name="name" value=item.name)
+		div.form-group
+			p Category
+			select(name="category" value=item.category)
+				option(value="1") Produce
+				option(value="2") Canned food
+				option(value="3") Pasta
+				option(value="4") Grains
+				option(value="5") Dry Beans
+				option(value="6") Condiments
+				option(value="7") Dairy
+				option(value="8") Meat
+				option(value="9") Poultry
+				option(value="10") Eggs
+				option(value="11") Snacks
+				option(value="12") Candy
+				option(value="13") Bread
+				option(value="14") Pastries
+				option(value="15") Nuts
+				option(value="16") Non-food
+		div.form-group
+			p Qty
+			input(type="text" name="qty" value=item.qty)
+		div.form-group
+			p Unit
+			select(name="unit" value=item.unit)
+				option(value="1") Item
+				option(value="2") Ounce
+				option(value="3") Pound
+				option(value="4") Kilogram
+				option(value="5") Gram
+				option(value="6") Mililiters
+		div.form-group
+			p Location
+			select(name="location" value=item.location)
+				option(value="1") Pantry
+				option(value="2") Fridge
+				option(value="3") Freezer
+		div.form-group
+			p Is it Perishable?
+			input(type="checkbox" name="isPerishable" value="Yes")
+		div.form-group
+			p Note
+			input(type="textarea" name="note" rows="10" cols="60" wrap="virtual" value=item.note)
+		input(type='submit', value='Submit')

@@ -1,0 +1,18 @@
+extends default
+
+block content
+	h3 Leave your message below as well as your name and best email address to reach you.
+	form(method='POST', action='/contact_action').contact_form
+		div.form-group
+			p Name:
+			input(type='text' name='name')
+		br
+		div.form-group
+			p Email:
+			input(type='email' name='email')
+		br
+		div.form-group
+			p Your Message:
+			input(type="textarea" name="msg" rows="10" cols="60" wrap="virtual" value="")
+		br
+		input(type='submit', value='Submit')

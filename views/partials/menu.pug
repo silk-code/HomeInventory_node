@@ -1,0 +1,8 @@
+nav
+	ul.menu
+		each link in menuList
+			li
+				a(href=`${link.path}`) #{link.name}
+		each link in loginList
+			li
+				a(href=`${link.path}`) #{link.name}

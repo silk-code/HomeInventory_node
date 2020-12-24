@@ -1,0 +1,7 @@
+extends default
+
+block content
+	h2 Enter new #{field}
+	form(method="POST" action="/update_"+field)
+		input(type="text" name="newValue" )
+		input(type='submit', value='Update')

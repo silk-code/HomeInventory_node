@@ -1,0 +1,14 @@
+doctype html
+html
+	head
+		title #{title}
+		link(rel='stylesheet', href='/styles.css')
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+	body
+		header
+			include partials/header
+		#page
+			block content
+		footer
+			include partials/footer
+		

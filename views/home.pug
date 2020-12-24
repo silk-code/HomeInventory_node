@@ -1,0 +1,14 @@
+extends default
+
+block content
+	h2 Welcome back, #{username}!
+	br
+	h3 Update Password
+	form(method="GET" action="/update_password")
+		input(type='submit', value='Update')
+	h3 Update email
+	form(method="GET" action="/update_email")
+		input(type='submit', value='Update')
+	h3 Update Name
+	form(method="GET" action="/update_name")
+		input(type='submit', value='Update')
