@@ -230,8 +230,7 @@ app.get('/show_items',function(req,res)
 						"inner join category on item.categoryID=category.categoryID "+
 						"inner join location on useritem.locationID=location.locationID "+
 						"inner join unit on unit.unitID=useritem.unitID "+
-						"where userId="+req.session.userID+" "+
-						"group by category.description";
+						"where userId="+req.session.userID+" ";
 			retrieveItems(items,res, sql, 'My pantry', 'show_items');
 		}
 		catch(error){
@@ -257,8 +256,7 @@ app.get('/show_perishables',function(req,res)
 						"inner join category on item.categoryID=category.categoryID "+
 						"inner join location on useritem.locationID=location.locationID "+
 						"inner join unit on unit.unitID=useritem.unitID "+
-						"where userId="+req.session.userID+" and isPerishable=1 "+
-						"group by category.description";
+						"where userId="+req.session.userID+" and isPerishable=1 ";
 			retrieveItems(items,res, sql, 'My perishables', 'show_items');
 		}
 		catch(error){
@@ -326,13 +324,11 @@ function updateItem(req,res)
 				return;
 			}else{
 				
-				var sql2="update useritem set locationId="+req.body.location+",unitId="+req.body.unit+",qty="+req.body.qty;
-				con.query(sql, function (error, results, fields) {
+				var sql2="update useritem set locationId="+req.body.location+",unitId="+req.body.unit+",qty="+req.body.qty+"WHERE itemID="+req.body.itemID;
+				con.query(sql2, function (error, results, fields) {
 					if (error) {
 						res.render('response', {title: 'Error', string: "We're having technical problems. Please wait until we resolve them. Thank you for you patience.", menuList:userMenu, loginList:userLogin});
 						return;
-					}else{
-						res.render('response', {title: 'Confirmation', string: 'Success! Item is deleted.', menuList:userMenu,loginList:userLogin});
 					}
 				});
 				res.render('response', {title: 'Confirmation', string: 'Success! Item is updated.', menuList:userMenu, loginList:userLogin});
